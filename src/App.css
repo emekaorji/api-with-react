@@ -1,3 +1,113 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+#app {
+  width: 100%;
+  min-width: 1150px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.7em;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  z-index: -5;
+}
+#smallBg {
+  top: 0;
+  left: 0;
+}
+#bigBg {
+  bottom: -1.6%;
+  right: 0;
+}
+
+#leftPanel {
+  width: 45%;
+}
+#leftPanel h1 {
+  font-size: 3em;
+  font-weight: 300;
+}
+strong {
+  font-weight: 700;
+}
+#leftPanel p {
+  /* font-weight: 200; */
+  font-weight: 100;
+}
+#rightPanel {
+  border: 1px solid #fff8;
+  background: #fff1;
+  backdrop-filter: blur(5px);
+  width: 35%;
+  height: 75vh;
+  border-radius: 1em;
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#rightPanel h1 {
+  font-size: 2.25em;
+}
+#rightPanel .input_field {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+#rightPanel .input_title,
+#rightPanel #forgot {
+  color: #fff;
+  font-size: 1em;
+  font-weight: 200;
+  /* border: 1px solid #fff; */
+}
+#rightPanel .inputs {
+  width: 100%;
+  background: #fff;
+  padding: .7em .9em;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: .2ch;
+  border: none;
+  border-radius: .2em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#rightPanel #forgot {
+  text-align: right;
+}
+#rightPanel #submit {
+  padding: .6em;
+  border-radius: .35em;
+  font-size: 1.1em;
+  font-family: inherit;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background: #DC3845;
+  color: inherit;
+  transition: all 250ms ease;
+}
+#rightPanel #submit:hover {
+  background: #d54b57;
+}
+#rightPanel #message {
+  font-weight: 300;
+  letter-spacing: .05em;
   text-align: center;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+a:hover {
+  text-decoration: underline;
 }

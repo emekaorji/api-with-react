@@ -1,38 +1,17 @@
 import "./App.css";
 import React, { Component } from "react";
+import LeftPanel from "./components/LeftPanel";
+import RightPanel from "./components/RightPanel";
+import SmallBg from "./media/small-rope.svg";
+import BigBg from "./media/big-rope.svg";
 
-export default class FetchUser extends Component {
-	state = {
-		person: null,
-		picture: null,
-	};
+const App = () => (
+  <div id="app">
+    <img className="background" id="smallBg" src={SmallBg} />
+    <img className="background" id="bigBg" src={BigBg} />
+    <LeftPanel/>
+    <RightPanel/>
+  </div>
+);
 
-	async componentDidMount() {
-		const url = "https://api.randomuser.me/";
-		const response = await fetch(url);
-		const data = await response.json();
-		this.setState({
-			person: data.results[0],
-			picture: data.results[0].picture.large,
-		});
-	}
-
-	render() {
-		return (
-			<div className='App'>
-        {console.log(Boolean(this.state.picture))}
-				{!this.state.picture ? (
-					<div>Loading...</div>
-				) : (
-					<div>
-						{this.state.person.name.title} {this.state.person.name.first} {this.state.person.name.last}
-						<div>
-							<img src={this.state.person.picture.large} />
-              <div>oiasfdnhsoiundhfuy9hi</div>
-						</div>
-					</div>
-				)}
-			</div>
-		);
-	}
-}
+export default App;
