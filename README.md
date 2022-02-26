@@ -1,3 +1,3 @@
 # api-with-react
 ### Learning:
-Using randomuser api to with react
+Using randomuser api to with react.
