@@ -41,16 +41,21 @@ strong {
   font-weight: 100;
 }
 #rightPanel {
-  border: 1px solid #fff8;
-  background: #fff1;
-  backdrop-filter: blur(5px);
   width: 35%;
   height: 75vh;
-  border-radius: 1em;
-  padding: 4em;
+  overflow: hidden;
+}
+#rightPanel form {
+  width: 100%;
+  height: 100%;
+  background: #fff1;
+  backdrop-filter: blur(9px);
+  border: 1px solid #fff8;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 4em;
+  border-radius: 1em;
 }
 #rightPanel h1 {
   font-size: 2.25em;

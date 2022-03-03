@@ -17,21 +17,18 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const firestore = getFirestore();
 
-export const createNewUser = async (userEmail, userDisplayName) => {
-	if (!userEmail) return;
+export const createNewUser = async (user, userDisplayName) => {
+	if (!user) return;
 
-	const userRef = doc(firestore, `users/${userEmail.uid}`);
+	const userRef = doc(firestore, `users/${user.uid}`);
 
 	const userAccountDetails = await getDoc(userRef);
 
 	if (!userAccountDetails.exists) {
-		const { email } = userEmail;
-		const { displayName } = userDisplayName;
-
 		try {
 			await setDoc(userRef, {
-				displayName,
-				email,
+				displayName: userDisplayName,
+				email: user,
 				createdAt: new Date(),
 			});
 		} catch (error) {

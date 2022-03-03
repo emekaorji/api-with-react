@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { Component } from "react";
 import LeftPanel from "./components/LeftPanel";
+// import Login from "./components/Login";
+import Signup from "./components/Signup";
 import SmallBg from "./media/small-rope.svg";
 import BigBg from "./media/big-rope.svg";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
         <Router>
           <Routes>
             <Route path="/" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
           </Routes>
         </Router>
 			</div>
