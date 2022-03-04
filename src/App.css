@@ -7,10 +7,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3.7em;
+  /* padding: 3.7em; */
   color: #fff;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+  position: relative;
 }
 
 .background {
@@ -26,7 +27,10 @@
   right: 0;
 }
 
-#leftPanel {
+
+
+
+/* #leftPanel {
   width: 45%;
 }
 #leftPanel h1 {
@@ -37,7 +41,6 @@ strong {
   font-weight: 700;
 }
 #leftPanel p {
-  /* font-weight: 200; */
   font-weight: 100;
 }
 #rightPanel {
@@ -70,7 +73,6 @@ strong {
   color: #fff;
   font-size: 1em;
   font-weight: 200;
-  /* border: 1px solid #fff; */
 }
 #rightPanel .inputs {
   width: 100%;
@@ -115,4 +117,4 @@ a {
 }
 a:hover {
   text-decoration: underline;
-}
+} */

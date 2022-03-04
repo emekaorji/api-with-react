@@ -1,33 +1,19 @@
 import "./App.css";
 import React, { Component } from "react";
-import LeftPanel from "./components/LeftPanel";
-// import Login from "./components/Login";
-import Signup from "./components/Signup";
 import SmallBg from "./media/small-rope.svg";
 import BigBg from "./media/big-rope.svg";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AppRouter from "./components/AppRouter";
+
+
+
 
 class App extends Component {
-	// async postData() {
-	//   try {
-
-	//   } catch (error) {
-	//     console.log(error);
-	//   }
-	// }
-
 	render() {
 		return (
 			<div id='app'>
 				<img className='background' id='smallBg' src={SmallBg} />
 				<img className='background' id='bigBg' src={BigBg} />
-				<LeftPanel />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Signup />} />
-            {/* <Route path="/login" element={<Login />} /> */}
-          </Routes>
-        </Router>
+				<AppRouter />
 			</div>
 		);
 	}
