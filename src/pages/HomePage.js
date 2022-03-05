@@ -1,8 +1,10 @@
 import React from "react";
 import NavLink from "../components/NavLink";
 import { Layout } from "../components/Layout";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function HomePage() {
+	const { currentUser } = useAuth();
 
 	const home = {
 		main: {
@@ -46,6 +48,7 @@ export default function HomePage() {
 					<p style={home.p}>
 						If you leave and I catch you, you will hear wheeen!
 					</p>
+					<p>{`The current user is: ${currentUser}`}</p>
 				</div>
 				<NavLink
 					to='/login'

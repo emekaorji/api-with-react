@@ -25,6 +25,7 @@
 #bigBg {
   bottom: -1.6%;
   right: 0;
+  word-wrap: break-word;
 }
 
 
