@@ -1,12 +1,12 @@
 import React from "react";
 import NavLink from "./NavLink";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
 
 export function Navbar() {
-	const history = useNavigate();
+	const history = useHistory();
 
-	const { Logout } = useAuth();
+	const { currentUser, Logout } = useAuth();
 
 	const navBar = {
 		container: {
@@ -19,6 +19,7 @@ export function Navbar() {
 			justifyContent: 'space-between',
 			backgroundColor: '#0004',
 			backdropFilter: 'blur(10px)',
+			zIndex: 999,
 		},
 		navContainer: {
 			gap: '7px',
@@ -40,19 +41,21 @@ export function Navbar() {
 				color='#fff2'
 			/>
 			<div style={navBar.navContainer}>
-				<NavLink to='/login' name='Login' />
-				<NavLink to='/register' name='Register' />
-				<NavLink to='/profile' name='Profile' />
-				<NavLink to='/protected' name='Protected' />
-				<NavLink
-					to='/logout'
-					name='Logout'
-					onClick={async (e) => {
-						e.preventDefault();
-						// handle logout
-						Logout()
-					}}
-				/>
+				{!currentUser && <NavLink to='/login' name='Login' />}
+				{!currentUser && <NavLink to='/register' name='Register' />}
+				{currentUser && <NavLink to='/profile' name='Profile' />}
+				{currentUser && <NavLink to='/protected' name='Protected' />}
+				{currentUser && (
+					<NavLink
+						to='/logout'
+						name='Logout'
+						onClick={async (e) => {
+							e.preventDefault();
+							// handle logout
+							Logout();
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);

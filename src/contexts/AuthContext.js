@@ -7,20 +7,26 @@ import {
 	signOut,
 	GoogleAuthProvider,
 	signInWithPopup,
+	sendPasswordResetEmail,
+	confirmPasswordReset,
 } from 'firebase/auth';
+import { useHistory } from 'react-router-dom';
 
 const AuthContext = createContext({
 	currentUser: null,
 	Register: () => Promise,
 	Login: () => Promise,
-	Logout: () => Promise,
 	SignInWithGoogle: () => Promise,
+	ForgotPassword: () => Promise,
+	ResetPassword: () => Promise,
+	Logout: () => Promise,
 });
 
 export const useAuth = () => useContext(AuthContext);
 
 export default function AuthContextProvider({ children }) {
 	const [currentUser, setCurrentUser] = useState(null);
+	const history = useHistory();
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -44,6 +50,16 @@ export default function AuthContextProvider({ children }) {
 		return signInWithPopup(auth, provider);
 	}
 
+	function ForgotPassword(email) {
+		return sendPasswordResetEmail(auth, email, {
+			url: history.push('/login'),
+		});
+	}
+
+	function ResetPassword(oobCode, newPassword) {
+		return confirmPasswordReset(auth, oobCode, newPassword)
+	}
+
 	function Logout() {
 		return signOut(auth);
 	}
@@ -52,8 +68,10 @@ export default function AuthContextProvider({ children }) {
 		currentUser,
 		Register,
 		Login,
-		Logout,
 		SignInWithGoogle,
+		ForgotPassword,
+		ResetPassword,
+		Logout,
 	};
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

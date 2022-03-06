@@ -1,6 +1,9 @@
+import { useToast } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import UseAnimations from 'react-useanimations';
+import loading from 'react-useanimations/lib/loading';
+import { Link, useHistory } from 'react-router-dom';
 import { Card } from '../components/Card';
 import Divider from '../components/Divider';
 import { Layout } from '../components/Layout';
@@ -8,11 +11,11 @@ import { useAuth } from '../contexts/AuthContext';
 import UseMounted from '../hooks/UseMounted';
 
 export default function Registerpage() {
-	const history = useNavigate();
+	const history = useHistory();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	// const toast = useToast();
+	const toast = useToast();
 
 	const mounted = UseMounted();
 
@@ -87,15 +90,29 @@ export default function Registerpage() {
 						onSubmit={async (e) => {
 							e.preventDefault();
 							// your register logic here
-							if (!email || !password) console.log('Enter email and password');
+							if (!email || !password) {
+								toast({
+									description: 'Check, your email or password is not right.',
+									status: 'error',
+									duration: 9000,
+									isClosable: true,
+								});
+								return;
+							}
 							setIsSubmitting(true);
 							Register(email, password)
 								.then((response) => {
 									console.log(response);
-									history('/profile');
+									history.push('/profile');
 								})
 								.catch((error) => {
 									console.log(error.message);
+									toast({
+										description: error.message,
+										status: 'error',
+										duration: 9000,
+										isClosable: true,
+									});
 								})
 								.finally(() => mounted.current && setIsSubmitting(false));
 						}}>
@@ -129,7 +146,15 @@ export default function Registerpage() {
 							type='submit'
 							onMouseOver={() => setBtn('#911d23')}
 							onMouseOut={() => setBtn('#b52b35')}>
-							{isSubmitting ? '...' : 'Sign up'}
+							{isSubmitting ? (
+								<UseAnimations
+									strokeColor={'yellow'}
+									speed={3}
+									animation={loading}
+								/>
+							) : (
+								'Sign up'
+							)}
 						</button>
 					</form>
 				</div>
