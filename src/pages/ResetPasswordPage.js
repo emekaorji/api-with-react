@@ -13,9 +13,6 @@ function useQuery() {
 export default function ResetPasswordPage() {
 	const { ResetPassword } = useAuth();
 	const query = useQuery();
-	console.log(query.get('mode'));
-	console.log(query.get('oobCode'));
-	console.log(query.get('continueUrl'));
 
 	const [newPassword, setNewPassword] = useState('');
 	const toast = useToast();
@@ -82,7 +79,6 @@ export default function ResetPasswordPage() {
 							// handle reset password
 							ResetPassword(query.get('oobCode'), newPassword)
 								.then((response) => {
-									console.log(response);
 									toast({
 										description: 'Your password has been changed',
 										status: 'success',
@@ -92,7 +88,6 @@ export default function ResetPasswordPage() {
 									history.push(query.get('continueUrl'));
 								})
 								.catch((error) => {
-									console.log(error);
 									toast({
 										description:
 											'Password could NOT be changed, should be 8 characters long or the link may have expired',

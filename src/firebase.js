@@ -1,3 +1,5 @@
+import React from 'react';
+import { useToast } from '@chakra-ui/react';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -17,7 +19,8 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const firestore = getFirestore();
 
-export const createNewUser = async (user, userDisplayName) => {
+export const CreateNewUser = async (user, userDisplayName) => {
+	const toast = useToast();
 	if (!user) return;
 
 	const userRef = doc(firestore, `users/${user.uid}`);
@@ -32,7 +35,13 @@ export const createNewUser = async (user, userDisplayName) => {
 				createdAt: new Date(),
 			});
 		} catch (error) {
-			console.log("Error in creating user", error);
+			toast({
+				title: 'Error',
+				description: 'Error! User could not be created',
+				status: 'error',
+				duration: 9000,
+				isClosable: true,
+			});
 		}
 	}
 };

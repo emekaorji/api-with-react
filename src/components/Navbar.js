@@ -44,7 +44,7 @@ export function Navbar() {
 				{!currentUser && <NavLink to='/login' name='Login' />}
 				{!currentUser && <NavLink to='/register' name='Register' />}
 				{currentUser && <NavLink to='/profile' name='Profile' />}
-				{currentUser && <NavLink to='/protected' name='Protected' />}
+				{currentUser && <NavLink to='/protected' name='Private' />}
 				{currentUser && (
 					<NavLink
 						to='/logout'

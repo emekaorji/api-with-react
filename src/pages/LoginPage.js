@@ -105,11 +105,9 @@ export default function Loginpage() {
 							setIsSubmitting(true);
 							Login(email, password)
 								.then((response) => {
-									console.log(response);
 									history.push(location.state?.from ?? '/profile');
 								})
 								.catch((error) => {
-									console.log(error.message);
 									toast({
 										description: 'Your email or password is not right',
 										status: 'error',
@@ -176,15 +174,7 @@ export default function Loginpage() {
 							backgroundColor: '#fff',
 							color: '#b52b35',
 						}}
-						onClick={() => {
-							SignInWithGoogle()
-								.then((user) => {
-									console.log(user);
-								})
-								.catch((error) => {
-									console.log(error);
-								});
-						}}>
+						onClick={() => SignInWithGoogle()}>
 						<FaGoogle />
 						&ensp;Sign in with Google
 					</button>

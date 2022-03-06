@@ -48,7 +48,6 @@ export default function HomePage() {
 					<p style={home.p}>
 						If you leave and I catch you, you will hear wheeen!
 					</p>
-					<p>{`The current user is: ${currentUser}`}</p>
 				</div>
 				<NavLink
 					to='/login'

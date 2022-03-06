@@ -102,11 +102,9 @@ export default function Registerpage() {
 							setIsSubmitting(true);
 							Register(email, password)
 								.then((response) => {
-									console.log(response);
 									history.push('/profile');
 								})
 								.catch((error) => {
-									console.log(error.message);
 									toast({
 										description: error.message,
 										status: 'error',
@@ -165,15 +163,7 @@ export default function Registerpage() {
 						backgroundColor: '#fff',
 						color: '#b52b35',
 					}}
-					onClick={() => {
-						SignInWithGoogle()
-							.then((user) => {
-								console.log(user);
-							})
-							.catch((error) => {
-								console.log(error);
-							});
-					}}>
+					onClick={() => SignInWithGoogle()}>
 					<FaGoogle />
 					&ensp;Sign in with Google
 				</button>

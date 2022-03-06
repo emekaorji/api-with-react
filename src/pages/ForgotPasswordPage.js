@@ -78,7 +78,6 @@ export default function ForgotPasswordPage() {
 							setIsSubmitting(true);
 							ForgotPassword(email)
 								.then((response) => {
-									console.log(response);
 									toast({
 										description:
 											"We sent you an email, check your inbox. Be sure to check your spam folder incase you don't find it in your inbox",
@@ -88,7 +87,6 @@ export default function ForgotPasswordPage() {
 									});
 								})
 								.catch((error) => {
-									console.log(error);
 									toast({
 										description:
 											'Sorry, we have searched and there is no one with this account',
